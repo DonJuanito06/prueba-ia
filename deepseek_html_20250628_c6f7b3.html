@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA 360: Tu Impacto Diario - Blog sobre Inteligencia Artificial</title>
+    <meta name="description" content="Blog educativo sobre Inteligencia Artificial y su influencia en tu rutina. Analizamos aplicaciones cotidianas, importancia de la formación en IA y compartimos recursos gratuitos.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2962FF;
+            --primary-dark: #0039CB;
+            --secondary: #455A64;
+            --accent: #00BFA5;
+            --light: #ECEFF1;
+            --dark: #263238;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--accent);
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(41, 98, 255, 0.9), rgba(0, 57, 203, 0.85)), url('https://images.unsplash.com/photo-1677442135722-5f8ea49cec8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .hero-btn:hover {
+            background-color: #008c76;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+        
+        /* Featured Cards */
+        .features {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-dark);
+            font-size: 2.2rem;
+        }
+        
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 350px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover .card-img img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .card p {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        
+        .card-btn {
+            display: inline-block;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .card-btn i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-btn:hover {
+            color: var(--primary-dark);
+        }
+        
+        .card-btn:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Main Content Sections */
+        .main-content {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .content-section {
+            margin-bottom: 60px;
+        }
+        
+        .content-title {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-dark);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .content-text {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        .content-highlight {
+            background-color: var(--light);
+            padding: 25px;
+            border-left: 4px solid var(--accent);
+            margin: 30px 0;
+        }
+        
+        .content-highlight p {
+            font-style: italic;
+            color: var(--secondary);
+        }
+        
+        .content-list {
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .content-list li {
+            margin-bottom: 15px;
+            list-style-position: inside;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 70px 0;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .stat-text {
+            font-size: 1.2rem;
+            max-width: 250px;
+        }
+        
+        /* Resources Section */
+        .resources {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .resource-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .resource-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .resource-card ul {
+            list-style-type: none;
+        }
+        
+        .resource-card li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .resource-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-links a {
+            display: block;
+            color: var(--light);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title, .content-title {
+                font-size: 1.8rem;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <div class="logo-text">IA <span>360</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="#ia-vida"><i class="fas fa-robot"></i> IA en la Vida</a></li>
+                    <li><a href="#formacion"><i class="fas fa-graduation-cap"></i> Formación</a></li>
+                    <li><a href="#recursos"><i class="fas fa-book"></i> Recursos</a></li>
+                    <li><a href="#proyecto"><i class="fas fa-info-circle"></i> Sobre el Proyecto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <h1>IA 360: Tu Impacto Diario</h1>
+                <p>Explora cómo la Inteligencia Artificial transforma cada aspecto de nuestra vida cotidiana. Desde cómo trabajamos y nos comunicamos hasta cómo aprendemos o cuidamos de nuestra salud, la IA ya está aquí.</p>
+                <a href="#ia-vida" class="hero-btn">Descubre más <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Cards -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Explora nuestro contenido</h2>
+            <div class="cards-container">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1677442135133-33d364e7d1e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="IA en la vida cotidiana">
+                    </div>
+                    <div class="card-content">
+                        <h3>¿Dónde está la IA en tu vida?</h3>
+                        <p>Descubre cómo la inteligencia artificial está presente en tu rutina diaria, desde las recomendaciones de música hasta los diagnósticos médicos avanzados.</p>
+                        <a href="#ia-vida" class="card-btn">Leer más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Formación en IA">
+                    </div>
+                    <div class="card-content">
+                        <h3>¿Por qué formarte en IA?</h3>
+                        <p>Entiende por qué la alfabetización en IA es esencial para tu futuro profesional y cómo puedes comenzar tu camino de aprendizaje hoy mismo.</p>
+                        <a href="#formacion" class="card-btn">Leer más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Recursos de IA">
+                    </div>
+                    <div class="card-content">
+                        <h3>Recursos para empezar</h3>
+                        <p>Accede a una selección de cursos, libros y herramientas gratuitas para comenzar tu viaje en el mundo de la inteligencia artificial.</p>
+                        <a href="#recursos" class="card-btn">Leer más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IA en la Vida Section -->
+    <section class="main-content" id="ia-vida">
+        <div class="container">
+            <div class="content-section">
+                <h2 class="content-title">¿Dónde está la IA en tu vida cotidiana?</h2>
+                <p class="content-text">La Inteligencia Artificial ya no es ciencia ficción. Está integrada en nuestras rutinas de maneras que a menudo pasan desapercibidas:</p>
+                
+                <div class="content-highlight">
+                    <p>"La IA no es solo robots futuristas; es el GPS que te guía, las recomendaciones de Spotify, los filtros de spam en tu email o los diagnósticos médicos precisos. Vivimos en un mundo impulsado por algoritmos." <br>- Domingos, 2015</p>
+                </div>
+                
+                <ul class="content-list">
+                    <li><strong>Salud:</strong> Apps como Ada Health analizan síntomas con IA. Hospitales usan algoritmos para detectar cáncer en radiografías con mayor precisión que humanos.</li>
+                    <li><strong>Educación:</strong> Plataformas como Khan Academy ofrecen tutorías personalizadas gracias a IA que adapta el contenido a tu ritmo de aprendizaje.</li>
+                    <li><strong>Hogar:</strong> Asistentes como Alexa o Google Home controlan dispositivos inteligentes mediante procesamiento de lenguaje natural.</li>
+                    <li><strong>Compras:</strong> Amazon y otras tiendas usan IA para recomendaciones basadas en tu historial y comportamiento similar al de otros usuarios.</li>
+                    <li><strong>Transporte:</strong> Apps de navegación como Waze predicen tráfico y optimizan rutas en tiempo real usando aprendizaje automático.</li>
+                </ul>
+                
+                <p class="content-text">Según un estudio de MIT Technology Review (2022), el 85% de las personas interactúan con sistemas de IA al menos 3 veces al día sin ser conscientes de ello.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">97M</div>
+                    <div class="stat-text">nuevos empleos en IA para 2025 (World Economic Forum)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-text">de las empresas adoptarán IA en sus operaciones para 2025 (Gartner)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1.5B</div>
+                    <div class="stat-text">de personas interactúan con IA diariamente sin saberlo (MIT Tech Review)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formación Section -->
+    <section class="main-content" id="formacion">
+        <div class="container">
+            <div class="content-section">
+                <h2 class="content-title">¿Por qué es fundamental formarse en IA?</h2>
+                <p class="content-text">La alfabetización en inteligencia artificial se ha convertido en una competencia básica para participar plenamente en la sociedad digital:</p>
+                
+                <div class="content-highlight">
+                    <p>"La alfabetización en IA no es opcional; es una competencia básica para la ciudadanía digital." <br>- Pérez Tornero, UNESCO, 2020</p>
+                </div>
+                
+                <h3 style="color: var(--primary); margin: 25px 0 15px; font-family: 'Montserrat', sans-serif;">Tres razones clave:</h3>
+                <ul class="content-list">
+                    <li><strong>Oportunidades laborales:</strong> El Foro Económico Mundial proyecta que para 2025 se crearán 97 millones de nuevos empleos en áreas relacionadas con IA y análisis de datos.</li>
+                    <li><strong>Toma de decisiones informadas:</strong> Entender cómo funciona la IA permite usarla de manera ética y crítica, evitando sesgos en áreas como préstamos bancarios, contrataciones laborales o acceso a servicios.</li>
+                    <li><strong>Empoderamiento profesional:</strong> No necesitas ser ingeniero para beneficiarte. Cursos básicos ayudan a maestros, médicos, artistas y profesionales de cualquier área a potenciar su trabajo con herramientas de IA.</li>
+                </ul>
+                
+                <p class="content-text">Un informe de McKinsey (2023) reveló que el 60% de los trabajadores que recibieron capacitación en IA básica mejoraron su productividad en al menos un 30%.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recursos Section -->
+    <section class="resources" id="recursos">
+        <div class="container">
+            <h2 class="section-title">Recursos para comenzar en IA</h2>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h3>Cursos Gratuitos</h3>
+                    <ul>
+                        <li><a href="https://www.coursera.org/learn/google-ai-essentials" target="_blank">Google AI Essentials (Coursera)</a></li>
+                        <li><a href="https://www.elementsofai.com/" target="_blank">Elements of AI (Universidad de Helsinki)</a></li>
+                        <li><a href="https://www.edx.org/course/introduction-to-artificial-intelligence-ai" target="_blank">Introducción a la IA (Microsoft/edX)</a></li>
+                        <li><a href="https://www.udacity.com/course/intro-to-artificial-intelligence--cs271" target="_blank">Intro to AI (Udacity)</a></li>
+                    </ul>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>Libros Recomendados</h3>
+                    <ul>
+                        <li>"Inteligencia Artificial: 101 cosas que debes saber hoy" - Libby Duane (2022)</li>
+                        <li>"AI Superpowers" - Kai-Fu Lee (2018)</li>
+                        <li>"The Master Algorithm" - Pedro Domingos (2015)</li>
+                        <li>"Human Compatible" - Stuart Russell (2019)</li>
+                    </ul>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>Herramientas Prácticas</h3>
+                    <ul>
+                        <li><a href="https://teachablemachine.withgoogle.com/" target="_blank">Teachable Machine (Google)</a></li>
+                        <li><a href="https://experiments.withgoogle.com/collection/ai" target="_blank">AI Experiments (Google)</a></li>
+                        <li><a href="https://openai.com/blog/chatgpt" target="_blank">ChatGPT (OpenAI)</a></li>
+                        <li><a href="https://www.kaggle.com/learn/intro-to-ai" target="_blank">Kaggle Learn - Intro to AI</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre el Proyecto Section -->
+    <section class="main-content" id="proyecto">
+        <div class="container">
+            <div class="content-section">
+                <h2 class="content-title">Sobre el Proyecto IA 360</h2>
+                <p class="content-text">IA 360: Tu Impacto Diario nació como un proyecto académico con el objetivo de democratizar el conocimiento sobre Inteligencia Artificial y hacerlo accesible para todos.</p>
+                
+                <div class="content-highlight">
+                    <p>"La IA es el 'motor' del siglo XXI: silencioso, omnipresente y transformador. Ignorarla es quedar fuera de la nueva realidad."</p>
+                </div>
+                
+                <p class="content-text">Este blog fue creado por [Tu Nombre], estudiante de [Tu Carrera], como parte de un proyecto educativo sobre Tecnologías de la Información y Comunicación (TIC).</p>
+                
+                <p class="content-text">Nuestra misión es:</p>
+                <ul class="content-list">
+                    <li>Explicar conceptos complejos de IA en lenguaje sencillo</li>
+                    <li>Mostrar aplicaciones prácticas en la vida cotidiana</li>
+                    <li>Proporcionar recursos accesibles para el aprendizaje</li>
+                    <li>Fomentar el pensamiento crítico sobre el impacto de la IA</li>
+                </ul>
+                
+                <p class="content-text">IA 360 se construyó utilizando la plataforma Blogger y todo su contenido está disponible de forma gratuita para fines educativos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">IA 360: Tu Impacto Diario</h3>
+                    <p>Un espacio dedicado a explorar cómo la Inteligencia Artificial transforma cada aspecto de nuestra vida cotidiana.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <div class="footer-links">
+                        <a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a>
+                        <a href="#ia-vida"><i class="fas fa-chevron-right"></i> IA en la Vida</a>
+                        <a href="#formacion"><i class="fas fa-chevron-right"></i> Formación en IA</a>
+                        <a href="#recursos"><i class="fas fa-chevron-right"></i> Recursos Gratuitos</a>
+                        <a href="#proyecto"><i class="fas fa-chevron-right"></i> Sobre el Proyecto</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <p><i class="fas fa-envelope"></i> info@ia360.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Universidad Tecnológica, Ciudad</p>
+                    <p><i class="fas fa-user-graduate"></i> Proyecto Académico</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 IA 360: Tu Impacto Diario. Todos los derechos reservados. Proyecto creado con fines académicos.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
